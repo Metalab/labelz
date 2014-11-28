@@ -38,7 +38,11 @@ function livesurr() {
 			var livesurr = $(this).attr('id').replace('config', 'surr');
 
 			//toggle shown or hidden state of the element 
-			$('#'+livesurr).toggle();
+			if ( $(this).val() == "" ) {
+				$('#'+livesurr).hide();
+			} else {
+				$('#'+livesurr).show();
+			}
 		}
 	});
 }
