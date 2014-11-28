@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Labels!</title>
+
+<link rel="stylesheet" type="text/css" href="css/labelz.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+
+<script>
+
+// get current date
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10) {
+    dd='0'+dd
+} 
+if(mm<10) {
+    mm='0'+mm
+} 
+today = yyyy+'-'+mm+'-'+dd;
+
+
+
+
+$(document).ready( function() {
+    $('.currentDate').val(today);
+	
+    $('.displayDate').html(today);
+	
+	$('#preview').hide();
+	$('#finish').hide();
+
+	$("input").keyup(update);
+	$("input").change(update);
+	$("select").change(update);
+	
+	
+	livesurr();
+	update(true);
+});
+
+// surrender text
+function livesurr() {
+	var livesurr;
+	$('.liveinput').each( function() {
+	
+		livesurr = $(this).attr('id').replace('config', 'surr');
+		if ( $(this).val() == "" ) {
+			$('#'+livesurr).hide();
+		}
+		else {
+			$('#'+livesurr).show();
+		}
+	});
+}
+
+
+ 
+function update(notarget) {
+	var selector = $(this);
+	if ( notarget === true) {
+		selector = $('select')
+	}
+
+	if ( $('#configPersonalName').val() != "" ) {
+		$('#preview').slideDown('slow');
+		$('#finish').slideDown('slow');
+	}
+	var liveinput
+	liveinput = selector.attr('id').replace('config', 'display');
+	$('#'+liveinput).html(
+		selector.val()
+	);
+
+	livesurr();
+
+}
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+<h1 class="doNotPrint">Print a Label!</h1>
+
+<div class="doNotPrint config">
+
+<div class="section">
+<h2>1. Choose type</h2>
+
+<ul id="chooseType">
+	<li>personal box/item</li>
+<!--
+	<li>project box</li>
+	<li>free style</li>
+-->
+</ul>
+</div>
+<div class="section" id="panel">
+<h2>2. Add information</h2>
+<ul class="form "id="configPersonal">
+	<li>
+		<label>This thing is called</label>
+		<input placeholder="" type="text" id="configPersonalName" class="liveinput inputText" />
+	</li>
+	<li>
+		<label>Your name</label>
+		<input placeholder="" type="text" id="configPersonalOwner" class="liveinput inputText" />
+	</li>
+	<li>
+		<label>Contact</label>
+		<input placeholder="e.g. email, jabber or mobile" type="text" id="configPersonalContact" class="liveinput inputText" />
+	</li>
+	<li>
+		<label>appreciated price in &euro;</label>
+		<input type="number" min="0" id="configPersonalPrice" class="liveinput inputText" />
+	</li>
+	<li>
+		<label>Permissions</label>
+		<select id="configPersonalPermissions" class="liveinput inputSelect">
+			<option selected="selected">free to use</option>
+			<option>free to use after instruction</option>
+			<option>for private use only</option>
+			<option>for sale</option>
+		</select>
+	</li>
+	<li>
+		<label>What if broken?</label>
+		<select id="configPersonalBroken" class="liveinput inputSelect">
+			<option selected="selected">throw away</option>
+			<option>replace &amp; notify owner </option>
+			<option>notify owner</option>
+		</select>
+	</li>
+	<li>
+		<label>URL for more Infos </label>
+		<input type="url" placeholder="e.g. wiki page" id="configPersonalUrl" class="liveinput inputText" />
+	</li>
+	<li>
+		<label for="configPersonalPrice">timestamp</label>
+		<input type="date" id="configPersonalDate" class="liveinput currentDate inputText" />
+	</li>
+</ul>
+
+</div>
+
+
+	
+</div>
+
+<div class="section" id="preview">
+	<h2 class="doNotPrint">3. Preview</h2>
+	<div class="print">
+		<ul>
+			<li id="outputPersonal">
+				<span id="displayPersonalName" class="livedisplay highlight"></span> 
+				<span id="surrPersonalOwner">
+					is owned by 
+					<span id="displayPersonalOwner" class="livedisplay highlight"></span>. 
+				</span>
+				It's for
+				<span class="livedisplay highlight" id="displayPersonalPermissions"></span>. 
+				<span id="surrPersonalPrice">
+					It costs approximately <span class="highlight">&euro;</span>
+					<span class="livedisplay highlight" id="displayPersonalPrice"></span>.
+				</span>
+				 
+				If broken, please
+				<span id="displayPersonalBroken" class="livedisplay highlight"></span> 
+				. 
+				<span id="surrPersonalContact">Contact: </span>
+				<span id="displayPersonalContact" class="livedisplay highlight"></span> 
+				<span id="surrPersonalUrl">More Infos: </span><span class="livedisplay" id="displayPersonalUrl"></span>
+				Created: <span class="livedisplay displayDate" id="displayPersonalDate"></span>
+			</li>
+		</ul>
+	</div>
+
+</div>
+	
+<div id="finish" class="section doNotPrint">
+	<h2>4. finish</h2>
+	<p>Looks good?</p>
+	<a href="#" class="printBt" onClick="window.print();">Print!</a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body {
+	background: #444;
+	color: #eee;
+	font-family: sans-serif;
+}
+
+ul, li {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+
+h2 {
+	margin: 0 0 .4em;
+	padding: 0 0 .1em;
+	font-size: 1em;
+	text-transform: uppercase;
+	border-bottom: 2px solid #aaa;
+}
+
+
+.inputText, .inputSelect {
+	margin: .2em 0;
+	font-family: sans-serif;
+	font-size: 1em;
+}
+
+.inputText {
+	width: 96%;
+	padding: 2%;
+	border: none;
+}
+.inputSelect {
+	width: 100%;
+	padding: 2% 0;
+	border: none;
+}
+
+#chooseType {
+	float:left;
+}
+#chooseType > li {
+	padding: .5em;
+	background: #666;
+	margin-bottom: .2em;
+}
+#panel {
+	max-width: 16em;
+}
+
+.form > li {
+	margin: .4em 0;
+}
+
+label {
+	width: 10em;
+	display: inline-block;
+}
+
+
+.config {
+	float:left;
+	max-width: 40em;
+}
+
+.preview {
+	width:8cm;
+	float:left;
+}
+
+#outputPersonal {
+	font-size:2.7mm;
+}
+
+.print {
+	color: #000;
+	background: #fff;
+	width: 56mm;
+	padding: 3mm;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	background: linear-gradient(to bottom right, #fff 0%,#F3EEEE 42%, #fff 45%, #fff 51%, #F4EFEF);
+	zoom: 140%;
+}
+
+.printPanel {
+	margin-top:.7em;
+}
+
+.printBt {
+	color: #fff;
+	text-decoration:none;
+	display: block;
+	text-align:center;
+	font-weight:bold;
+	padding: .8em 1.1em;
+	background: #3377cc;
+}
+
+.section {
+	float:left;
+	margin:0 1em 1em 0;
+}
+
+.highlight {
+	font-weight: bold;
+}
+
+.displayDate {
+	white-space: nowrap;
+}
+
+@media print {
+	body {
+		width:124mm;
+	}
+	.doNotPrint {
+		display:none !important;
+	}
+	.print {
+		background: #fff;
+		zoom: 100%;
+		box-shadow:none;
+	}
+}
