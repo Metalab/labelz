@@ -53,8 +53,9 @@ h2 {
 }
 
 label {
-	width: 10em;
 	display: inline-block;
+	font-size: .75em;
+	text-transform: uppercase;
 }
 
 
