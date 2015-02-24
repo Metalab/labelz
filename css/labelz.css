@@ -114,6 +114,8 @@ label {
 @media print {
 	body {
 		width:124mm;
+		margin:0;
+		padding:0;
 	}
 	.doNotPrint {
 		display:none !important;
@@ -122,5 +124,8 @@ label {
 		background: #fff;
 		zoom: 100%;
 		box-shadow:none;
+		margin:0;
+		padding:0;
 	}
+	
 }
