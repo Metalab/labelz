@@ -12,16 +12,16 @@
 			<div class="section">
 				<h2>1. Choose type</h2>
 				<ul id="chooseType">
-					<li>personal box/item</li>
+					<li id="choosePersonal" class="typeSelected">personal box/item</li>
+					<li id="chooseFreeStyle">free style</li>
 				<!--
 					<li>project box</li>
-					<li>free style</li>
 				-->
 				</ul>
 			</div>
 			<div class="section" id="panel">
 				<h2>2. Add information</h2>
-				<ul class="form "id="configPersonal">
+				<ul class="form" id="configPersonal">
 					<li>
 						<label>This thing is called</label>
 						<input placeholder="" type="text" id="configPersonalName" class="liveinput inputText" />
@@ -73,6 +73,12 @@
 						<input type="date" id="configPersonalDate" class="liveinput currentDate inputText" />
 					</li>
 				</ul>
+				<ul class="form" id="configFreeStyle">
+					<li>
+						<label>Hint: You can use HTML-tags in here</label>
+						<textarea id="configFreeStyleText" class="liveinput inputText">Your text goes here…</textarea>
+					</li>
+				</ul>
 			</div>
 		</div>
 
@@ -100,6 +106,9 @@
 						<span id="displayPersonalContact" class="livedisplay highlight"></span>
 						<span id="surrPersonalUrl">More Infos: </span><span class="livedisplay" id="displayPersonalUrl"></span>
 						Created: <span class="livedisplay displayDate" id="displayPersonalDate"></span>
+					</li>
+					<li id="outputFreeStyle">
+						<span id="displayFreeStyleText" class="livedisplay">Your text goes here…</span>
 					</li>
 				</ul>
 			</div>

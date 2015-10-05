@@ -18,6 +18,9 @@ h2 {
 	border-bottom: 2px solid #aaa;
 }
 
+.typeSelected {
+	background: #37c !important;
+}
 
 .inputText, .inputSelect {
 	margin: .2em 0;
@@ -36,6 +39,10 @@ h2 {
 	border: none;
 }
 
+textarea {
+	resize:	vertical;
+}
+
 #chooseType {
 	float:left;
 }
@@ -43,6 +50,7 @@ h2 {
 	padding: .5em;
 	background: #666;
 	margin-bottom: .2em;
+	cursor: pointer;
 }
 #panel {
 	max-width: 16em;
@@ -69,7 +77,7 @@ label {
 	float:left;
 }
 
-#outputPersonal {
+#outputPersonal, #outputFreeStyle {
 	font-size:2.7mm;
 }
 

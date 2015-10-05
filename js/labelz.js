@@ -21,10 +21,13 @@ $(document).ready( function() {
 	$('.displayDate').html(today);
 
 	$('#preview, #finish').hide(); //selects both html elements
+	$('#configFreeStyle, #outputFreeStyle').hide(); //selects both html elements
+
+	$("#chooseType > li").on('click', chooseType);
 
 	//.on is also triggered for elements added after the dom finished loading
-	$("input").on('keyup', update);
-	$("input, select").on('change', update);
+	$("input, textarea").on('keyup', update);
+	$("input, textarea, select").on('change', update);
 
 	$('select').trigger('change'); //triggers the change event on page load
 	livesurr();
@@ -45,6 +48,27 @@ function livesurr() {
 			}
 		}
 	});
+}
+
+function chooseType() {
+	var type = $(this).attr('id');
+
+	if ( type ) {
+		//hiding all forms and print views
+		$(".form, .print li").hide();
+
+		//removing "selected" class from all choose "buttons"
+		$("#chooseType > li").removeClass("typeSelected");
+
+		var config = type.replace('choose', 'config');
+		var print = type.replace('choose', 'output');
+
+		//add "selected" class to the used "button" and unhide chosen form and print view
+		$('#' + type).addClass("typeSelected");
+		$('#' + config).show();
+		$('#' + print).show();
+	}
+
 }
 
 function update() {
