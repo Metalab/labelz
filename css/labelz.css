@@ -77,8 +77,8 @@ label {
 	float:left;
 }
 
-#outputPersonal, #outputFreeStyle {
-	font-size:2.7mm;
+#outputPersonal, #outputFreeStyle, #outputPersonalWithQRCode, #outputFreeStyleWithQRCode {
+	font-size:2.0mm;
 }
 
 .print {
@@ -119,6 +119,12 @@ label {
 	white-space: nowrap;
 }
 
+.qrCode {
+    float: left;
+    display: block;
+    margin-right: 10px;
+}
+
 @media print {
 	body {
 		width:124mm;
@@ -133,7 +139,8 @@ label {
 		zoom: 100%;
 		box-shadow:none;
 		margin:0;
-		padding:0;
+		padding:2px;
+        border:1px dotted gray;
 	}
 	
 }

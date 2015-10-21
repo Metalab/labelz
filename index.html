@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -13,7 +13,9 @@
 				<h2>1. Choose type</h2>
 				<ul id="chooseType">
 					<li id="choosePersonal" class="typeSelected">personal box/item</li>
-					<li id="chooseFreeStyle">free style</li>
+					<li id="choosePersonalWithQRCode">personal box/item with qr code</li>
+                    <li id="chooseFreeStyle">free style</li>
+                    <li id="chooseFreeStyleWithQRCode">free style with qr code</li>
 				<!--
 					<li>project box</li>
 				-->
@@ -35,7 +37,7 @@
 						<input placeholder="e.g. email, jabber or mobile" type="text" id="configPersonalContact" class="liveinput inputText" />
 					</li>
 					<li>
-						<label>appreciated price in &euro;</label>
+						<label>appreciated price in &#8377;</label>
 						<input type="number" min="0" id="configPersonalPrice" class="liveinput inputText" />
 					</li>
 					<li>
@@ -92,24 +94,50 @@
 							is owned by
 							<span id="displayPersonalOwner" class="livedisplay highlight"></span>.
 						</span>
-						It's
+						<span>It's</span>
 						<span class="livedisplay highlight" id="displayPersonalPermissions"></span>.
 						<span id="surrPersonalPrice">
-							It costs approximately <span class="highlight">&euro;</span><span class="livedisplay highlight" id="displayPersonalPrice"></span>.
+							It costs approximately <span class="highlight">&#8377;</span><span class="livedisplay highlight" id="displayPersonalPrice"></span>.
 						</span>
 
-						If broken,
+						<span>If broken,</span>
 						<span id="displayPersonalBroken" class="livedisplay highlight"></span>.
-						If annoying,
+						<span>If annoying,</span>
 						<span id="displayPersonalAnnoying" class="livedisplay highlight"></span>.
-						<span id="surrPersonalContact">Contact: </span>
+						<br /><span id="surrPersonalContact">Contact: </span>
 						<span id="displayPersonalContact" class="livedisplay highlight"></span>
-						<span id="surrPersonalUrl">More Infos: </span><span class="livedisplay" id="displayPersonalUrl"></span>
-						Created: <span class="livedisplay displayDate" id="displayPersonalDate"></span>
+						<br /><span id="surrPersonalUrl">More Infos: </span><span class="livedisplay" id="displayPersonalUrl"></span>
+						<br /><span>Created:</span> <span class="livedisplay displayDate" id="displayPersonalDate"></span>
 					</li>
+					<li id="outputPersonalWithQRCode">
+                        <span id="displayPersonalQRCode" class="qrCode"></span>
+						<span id="displayPersonalNameWithQRCode" class="livedisplay highlight"></span>
+						<span id="surrPersonalOwnerWithQRCode">
+							is owned by
+							<span id="displayPersonalOwnerWithQRCode" class="livedisplay highlight"></span>.
+						</span>
+						<span>It's</span>
+						<span class="livedisplay highlight" id="displayPersonalPermissionsWithQRCode"></span>.
+						<span id="surrPersonalPriceWithQRCode" style="display:none">
+							It costs approximately <span class="highlight">&#8377;</span><span class="livedisplay highlight" id="displayPersonalPriceWithQRCode"></span>.
+						</span>
+
+						<span>If broken,</span>
+						<span id="displayPersonalBrokenWithQRCode" class="livedisplay highlight"></span>.
+						<span>If annoying,</span>
+						<span id="displayPersonalAnnoyingWithQRCode" class="livedisplay highlight"></span>.
+						<br /><span id="surrPersonalContactWithQRCode">Contact: </span>
+						<span id="displayPersonalContactWithQRCode" class="livedisplay highlight"></span>
+						<br /><span id="surrPersonalUrlWithQRCode">More Infos: </span><span class="livedisplay" id="displayPersonalUrlWithQRCode"></span>
+						<br /><span>Created:</span> <span class="livedisplay displayDate" id="displayPersonalDateWithQRCode"></span>
+					</li>                    
 					<li id="outputFreeStyle">
-						<span id="displayFreeStyleText" class="livedisplay">Your text goes here…</span>
+						<span id="displayFreeStyleText" class="livedisplay">Your text goes here...</span>
 					</li>
+					<li id="outputFreeStyleWithQRCode">
+                        <span id="displayFreeStyleQRCode" class="qrCode"></span>
+						<span id="displayFreeStyleTextWithQRCode" class="livedisplay">Your text goes here...</span>
+					</li>                    
 				</ul>
 			</div>
 		</div>
@@ -121,6 +149,7 @@
 		</div>
 
 		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src='js/qrcode.min.js'></script>                
 		<script src='js/labelz.js'></script>
 	</body>
 </html>
