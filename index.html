@@ -86,7 +86,7 @@
 
 		<div class="section" id="preview">
 			<h2 class="doNotPrint">3. Preview</h2>
-			<div class="print">
+			<div id="printView" class="print">
 				<ul>
 					<li id="outputPersonal">
 						<span id="displayPersonalName" class="livedisplay highlight"></span>
@@ -140,16 +140,20 @@
 					</li>                    
 				</ul>
 			</div>
+            <div id="imageView">
+            </div>
 		</div>
 
 		<div id="finish" class="section doNotPrint">
 			<h2>4. finish</h2>
 			<p>Looks good?</p>
-			<a href="#" class="printBt" onClick="window.print();">Print!</a>
+			<a href="#" class="printBt" onClick="printLabel();">Print!</a>
+            <a href="#" class="printBt" onClick="generateImage();">Generate PNG</a>
 		</div>
 
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src='js/qrcode.min.js'></script>                
 		<script src='js/labelz.js'></script>
+        <script src='js/html2canvas.js'></script>
 	</body>
 </html>

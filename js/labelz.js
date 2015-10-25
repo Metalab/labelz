@@ -60,6 +60,7 @@ function livesurr() {
 }
 
 function chooseType() {
+    $("#imageView").text('');
 	var type = $(this).attr('id');
 
 	if ( type ) {
@@ -70,10 +71,12 @@ function chooseType() {
 		$("#chooseType > li").removeClass("typeSelected");
 
         if(type.indexOf('WithQRCode') == -1) {
+            $("#printView").css("padding", "3mm");
             hasQRCode = false;
 		    var config = type.replace('choose', 'config');
 		    var print = type.replace('choose', 'output');
         } else {
+            $("#printView").css("padding", "1mm");
             hasQRCode = true;
             var originalType = type.replace('WithQRCode', '');
             var config = originalType.replace('choose', 'config');
@@ -143,4 +146,61 @@ function update() {
 	}
     
 	livesurr();
+}
+
+function generateImage() {
+    $("#imageView").text('');
+    var height = $("#printView").height();
+    var width = $("#printView").width();
+
+    $("#printView").height(height * 2);
+    $("#printView").width(width * 2);
+    $("#printView li").each(function() {
+        $(this).addClass('magnify');
+        $(this).find('img').height('150px');
+        $(this).find('img').width('150px');
+    });
+    
+    html2canvas($("#printView"), {
+        useCORS: true,
+        allowTaint: false,
+        letterRendering: true,
+        width: 234.330 * 2,
+        height: 88.653 * 2,
+        onrendered: function(canvas) {            
+            $("#printView").removeClass('print');
+            $("#printView").addClass('image');
+
+            
+            var image = new Image();
+	        image.src = canvas.toDataURL("image/png", 1);
+            image.height = 88.653;
+            image.width = 234.330;
+
+            $("#imageView").append(image);
+            $("#imageView").append("<a>Download Label</a>");
+            $("#imageView a").attr("href", canvas.toDataURL("image/png", 1));
+            $("#imageView a").attr("download", "label.png");
+            
+            $("#printView").removeClass('image');            
+            $("#printView").addClass('print');
+            
+            $("#printView").height('auto');
+            $("#printView").width(width);
+            $("#printView li").each(function() {
+                $(this).removeClass('magnify');
+                $(this).find('img').height('75px');
+                $(this).find('img').width('75px');                
+            });            
+        }
+    });    
+}
+
+function clearImage() {
+    $("#imageView").text('');
+}
+
+function printLabel() {
+    $("#imageView").text('');
+    window.print();
 }
